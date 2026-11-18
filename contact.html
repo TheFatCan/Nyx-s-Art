@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nyx's Art | Contact</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <nav class="nav">
+      <a class="logo" href="index.html">Nyx's Art</a>
+      <ul class="nav-links">
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="commissions.html">Commissions</a></li>
+        <li><a href="fanart.html">Fan Art</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <h1>Contact</h1>
+      <p>Commission enquiries, collabs, or just saying hi. I'll reply as soon as I can.</p>
+    </section>
+
+    <section>
+      <!-- Replace YOUR_FORM_ID with the ID from formspree.io (see notes) -->
+      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <label>Name
+          <input type="text" name="name" required autocomplete="name">
+        </label>
+
+        <label>Email
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+
+        <label>What's it about?
+          <select name="topic">
+            <option>Commission enquiry</option>
+            <option>Collaboration</option>
+            <option>General question</option>
+          </select>
+        </label>
+
+        <label>Commission type <span class="hint">(if relevant)</span>
+          <select name="commission_type">
+            <option value="">Not sure / not a commission</option>
+            <option>Headshot</option>
+            <option>Half-body</option>
+            <option>Full-body</option>
+            <option>Chibi</option>
+            <option>Animated piece</option>
+          </select>
+        </label>
+
+        <label>Message
+          <textarea name="message" required></textarea>
+          <span class="hint">For commissions, include your character's name/species and a link to a reference sheet if you have one.</span>
+        </label>
+
+        <!-- Spam trap: leave hidden -->
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <button class="btn btn-primary" type="submit">Send message</button>
+      </form>
+
+      <p class="contact-alt">Prefer email? <a href="mailto:you@example.com">you@example.com</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <ul>
+      <li><a href="#">Bluesky</a></li>
+      <li><a href="#">Twitter</a></li>
+      <li><a href="#">Instagram</a></li>
+    </ul>
+    <ul>
+      <li><a href="mailto:you@example.com">Email</a></li>
+      <li><a href="terms.html">Commission TOS</a></li>
+    </ul>
+    <!-- Hidden dedication goes here -->
+  </footer>
+
+</body>
+</html>
