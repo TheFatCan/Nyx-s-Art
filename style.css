@@ -1,0 +1,164 @@
+/* ---- Colours and basics: change these to restyle the site ---- */
+:root {
+  --bg: #2A2522;
+  --box: #3A322E;
+  --line: #54493F;
+  --text: #F5F0EA;
+  --muted: #B9AEA3;
+  --accent: #D68A9A;   /* dusty rose. Alternatives: #9C89B8 lavender, #D4AF37 gold */
+  --on-accent: #2A2522;
+  --radius: 8px;
+  --max: 1100px;
+  --font: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; }
+body { background: var(--bg); color: var(--text); font-family: var(--font); line-height: 1.5; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; padding: 0; }
+img { display: block; max-width: 100%; }
+h2 { font-size: 1.3rem; margin-bottom: 16px; }
+section { padding: 44px 20px; max-width: var(--max); margin: 0 auto; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* All artwork fills its box without stretching */
+.hero-image, .price-card img, .featured-grid img, .fanart-grid img, .about-teaser img {
+  width: 100%; height: auto; object-fit: cover; background: var(--box); border-radius: var(--radius);
+}
+
+/* Stop big images from stretching grid columns */
+.hero > *, .about-teaser > *, .price-card, .featured-grid a, .fanart-grid a { min-width: 0; }
+
+/* 1. Nav */
+.nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+       gap: 10px; padding: 14px 20px; max-width: var(--max); margin: 0 auto; }
+.logo { font-weight: 700; font-size: 1.1rem; }
+.nav-links { display: flex; gap: 6px 14px; flex-wrap: wrap; color: var(--muted); font-size: .85rem; }
+.nav-links a:hover { color: var(--text); }
+
+/* 2. Status banner */
+.status-banner { background: var(--accent); color: var(--on-accent); text-align: center;
+                 padding: 8px 16px; font-weight: 600; font-size: .9rem; }
+
+/* 3. Hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: center; }
+.hero h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; }
+.tagline { color: var(--muted); margin: 10px 0 20px; }
+.hero-image { aspect-ratio: 4 / 5; }
+.hero-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 10px 20px; border-radius: 999px;
+       border: 2px solid var(--accent); font-weight: 600; font-size: .95rem; }
+.btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn:hover { opacity: .85; }
+
+/* Shared grid layout */
+.price-grid, .featured-grid, .fanart-grid { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+/* 4. Price cards */
+.price-card { display: block; background: var(--box); border-radius: var(--radius); padding: 10px; }
+.price-card img { aspect-ratio: 1; margin-bottom: 8px; }
+.price-card h3 { font-size: 1rem; }
+.price-card p { color: var(--muted); font-size: .9rem; }
+
+/* 5. Featured work */
+.featured-grid img { aspect-ratio: 1; transition: transform .2s; }
+.featured-grid a:hover img { transform: scale(1.02); }
+
+/* 6. Fan art strip */
+.fanart-grid a { display: block; }
+.fanart-grid img { aspect-ratio: 3 / 4; }
+.fanart-grid span { display: block; text-align: center; margin-top: 6px; font-size: .9rem; }
+
+/* 7. About teaser */
+.about-teaser { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; align-items: center; }
+.about-teaser img { width: 160px; height: 160px; border-radius: 50%; }
+.about-teaser p { color: var(--muted); max-width: 52ch; margin-bottom: 10px; }
+
+/* 8. Footer */
+.site-footer { border-top: 1px solid var(--box); padding: 32px 20px; color: var(--muted); font-size: .9rem;
+               display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; }
+.site-footer ul { display: flex; gap: 14px; flex-wrap: wrap; }
+.site-footer a:hover { color: var(--text); }
+
+/* Wider screens */
+@media (min-width: 720px) {
+  .nav-links { gap: 16px; font-size: .95rem; }
+  .hero { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+  .price-grid, .featured-grid, .fanart-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .about-teaser { grid-template-columns: 160px minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ---- Inner pages (About / Contact) ---- */
+.page-header { padding-bottom: 0; }
+.page-header h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.1; }
+.page-header p { color: var(--muted); margin-top: 8px; max-width: 55ch; }
+.nav-links a[aria-current="page"] { color: var(--accent); }
+
+/* About */
+.about-page { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: start; }
+.about-page img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: var(--box); border-radius: var(--radius); }
+.about-page h2 { margin-top: 24px; }
+.about-page h2:first-child { margin-top: 0; }
+.about-page p { color: var(--muted); max-width: 60ch; margin-bottom: 12px; }
+.about-page ul { color: var(--muted); padding-left: 20px; margin-bottom: 12px; list-style: disc; }
+.page-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+.page-header + section { padding-top: 20px; }
+
+/* Contact form */
+.contact-form { display: grid; gap: 16px; max-width: 560px; }
+.contact-form label { display: grid; gap: 6px; font-weight: 600; font-size: .95rem; }
+.contact-form input, .contact-form select, .contact-form textarea {
+  font: inherit; color: var(--text); background: var(--box); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 10px 12px; width: 100%;
+}
+.contact-form textarea { min-height: 140px; resize: vertical; }
+.contact-form .btn { cursor: pointer; justify-self: start; font: inherit; font-weight: 600; }
+.contact-form .hint { color: var(--muted); font-size: .85rem; font-weight: 400; }
+.contact-alt { color: var(--muted); margin-top: 24px; }
+.contact-alt a { color: var(--accent); }
+.hp { position: absolute; left: -9999px; }  /* spam trap field, keep hidden */
+
+@media (min-width: 720px) {
+  .about-page { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); }
+}
+
+/* ---- Gallery, Fan art, Commissions, Terms ---- */
+.series-note { color: var(--muted); font-size: .9rem; margin-bottom: 14px; max-width: 60ch; }
+
+/* Gallery grid: keeps each piece's real proportions */
+.gallery-grid { columns: 2; column-gap: 12px; }
+.gallery-grid > a:not(.lightbox) { display: block; margin-bottom: 12px; break-inside: avoid; }
+.gallery-grid img { width: 100%; height: auto; background: var(--box); border-radius: var(--radius); }
+.gallery-grid > a:not(.lightbox):hover img { opacity: .88; }
+
+/* Click-to-enlarge (no JavaScript) */
+.lightbox { display: none; position: fixed; inset: 0; z-index: 50; background: rgba(20, 16, 14, .94);
+            place-items: center; padding: 20px; cursor: zoom-out; }
+.lightbox:target { display: grid; }
+.lightbox img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: var(--radius); }
+
+/* Commissions */
+.status-box { padding-bottom: 0; }
+.status-box p:first-child { background: var(--box); border-left: 4px solid var(--accent); padding: 12px 16px; border-radius: var(--radius); margin-bottom: 8px; }
+.price-card .price { color: var(--accent); font-weight: 600; margin: 2px 0 6px; }
+.steps { padding-left: 22px; color: var(--muted); max-width: 60ch; margin-bottom: 20px; }
+.steps li { margin-bottom: 10px; }
+.steps strong { color: var(--text); }
+.steps a, .prose a { color: var(--accent); }
+.plain-list { padding-left: 20px; list-style: disc; color: var(--muted); }
+.queue { display: grid; gap: 8px; max-width: 480px; }
+.queue li { display: flex; justify-content: space-between; align-items: center; gap: 12px;
+            background: var(--box); padding: 10px 14px; border-radius: var(--radius); }
+.pill { font-size: .8rem; padding: 3px 10px; border-radius: 999px; background: var(--accent); color: var(--on-accent); font-weight: 600; }
+.pill.done { background: var(--line); color: var(--text); }
+
+/* Terms */
+.prose h2 { margin-top: 24px; margin-bottom: 8px; }
+.prose p { color: var(--muted); max-width: 62ch; margin-bottom: 8px; }
+.prose .btn { margin-top: 24px; }
+
+@media (min-width: 720px) {
+  .gallery-grid { columns: 3; }
+}
